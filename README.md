@@ -25,7 +25,10 @@ The below are screenshots of the game:
 
 ## 3. The Repository  
 The repository consists of:
-- ...
+- index file to run the game 
+- JavaScript file containing the game's logic
+- dice pictures
+- screenshots of the game
 
 
 ## 4. Future Development 
