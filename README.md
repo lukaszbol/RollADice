@@ -16,7 +16,7 @@ NOTE: The project is under construction.
 
 
 ## 2. System look
-The below are screenshots from the initial version of the program:
+The below are screenshots of the game:
 
 
 ## 2.1 Main Menu
