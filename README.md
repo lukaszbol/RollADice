@@ -19,15 +19,15 @@ GAME RULES:
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that, it is the next player's turn.
 - The first player to reach 100 points on GLOBAL score wins the game.
 
-NOTE: The project is under construction.
-
 
 ## 2. System look
 The below are screenshots of the game:
 
+## 2.1 Initial State
+![Initial State](gamePictures/1-gameInitialState.jpg)
 
-## 2.1 Main Menu
-...
+## 2.2 Game Running
+![Game Running](gamePictures/2-gameRunning.jpg)
 
 
 ## 3. The Repository  
@@ -40,7 +40,9 @@ The repository consists of:
 
 ## 4. Future Development 
 Future development of this application may include:
-- ...
+- user profiles
+- adding more players
+- adding colour themes
 
 ## 5. Help  
 Please do not hesitate to contact me on the below e-mail if you encounter any problems or need further information.
