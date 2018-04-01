@@ -10,7 +10,14 @@
 
 
 ## 1. Project Description  
-This is a simple game created using JavaScript, with an utilisation of HTML and CSS. This is a 2 players' game in which a player rolls a dice and saves their scores. When the dice shows 1, next player rolls the dice. If there are two 6, the main player score is reset and the next player rolls the dice. The first person reaching 100 points wins the game.
+This is a simple game created using JavaScript, with an utilisation of HTML and CSS.
+
+GAME RULES:
+- The game has 2 players, playing in rounds.
+- In each turn, a player rolls a dice as many times as they wish. Each result gets added to his ROUND (Current) score.
+- If the player rolls a 1, all his ROUND score gets lost. After that, it is the next player's turn.
+- The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that, it is the next player's turn.
+- The first player to reach 100 points on GLOBAL score wins the game.
 
 NOTE: The project is under construction.
 
@@ -25,7 +32,10 @@ The below are screenshots of the game:
 
 ## 3. The Repository  
 The repository consists of:
-- ...
+- index file to run the game 
+- JavaScript file containing the game's logic
+- dice pictures
+- screenshots of the game
 
 
 ## 4. Future Development 
