@@ -12,7 +12,7 @@
 
 
 ## 1. Project Description  
-Date of the project: 03/2018
+Date of the project: 03/2018   
 This is a simple game created using JavaScript, with an utilisation of HTML and CSS.
 
 GAME RULES:
