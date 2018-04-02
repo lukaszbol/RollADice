@@ -150,5 +150,6 @@ i {
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
 
-.winner { background-color: #FFF468; }
-.winner .player-name { font-weight: 300; color: #00308f; }
+.winner { background-color: #FFF468;}
+.winner .player-name { font-weight: 300; color: #00308f;}
+.winner .player-score {font-weight: 300; color: #d10000;}

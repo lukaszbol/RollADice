@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore;
+var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore, winningScore;
 
 init();
 
@@ -65,7 +65,7 @@ document.querySelector('.btn-hold').addEventListener('click', function()
 
 
             // Check if player won the game
-            if(scores[activePlayer] >= 20)
+            if(scores[activePlayer] >= winningScore)
             {
                 document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
                 document.querySelector('.dice').style.display = 'none';
@@ -104,6 +104,7 @@ function init()
     roundScore = 0;
     previousScore = -1;
     gamePlaying = true;
+    winningScore = prompt("Enter winning score: ");
     document.querySelector('.dice').style.display = 'none';
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
