@@ -40,11 +40,11 @@ The below are screenshots of the game:
 
 ## 3. The Repository  
 The repository consists of:
-- index file to run the game 
-- JavaScript file containing the game's logic
-- CSS file setting the game's visual look
-- dice pictures
-- screenshots of the game
+- index - index file to run the game 
+- application - JavaScript file containing the game's logic
+- style - CSS file setting the game's visual look
+- images - pictures used in the game
+- gamePictures - screenshots of the game
 
 
 ## 4. What Went Wrong
