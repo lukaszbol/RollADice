@@ -35,6 +35,8 @@ The below are screenshots of the game:
 ## 2.2 Game Running
 ![Game Running](gamePictures/2-gameRunning.jpg)
 
+## 2.3 Winning Player
+![Winner](gamePictures/3-gameWinner.jpg)
 
 ## 3. The Repository  
 The repository consists of:
