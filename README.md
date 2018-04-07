@@ -18,12 +18,12 @@ This is a simple game created using JavaScript, with an utilisation of HTML and 
 
 GAME RULES:
 - The game has 2 players, playing in rounds.
-- At the start of the game, the player sets the winnning score (e.g. 20).
+- At the start of the game, the player sets the winnning score (e.g. 20 points).
 - In each turn, a player rolls a dice as many times as they wish. Each result gets added to his ROUND (Current) score.
 - If the player rolls a 1, all his ROUND score gets lost. After that, it is the next player's turn.
 - A player looses his entire score when he rolls two 6 in a row. After that, the next player continues.
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that, it is the next player's turn.
-- The first player to reach 100 points on GLOBAL score wins the game.
+- The first player to reach the winning score (e.g. 20 points) on GLOBAL score wins the game.
 
 
 ## 2. System Look
