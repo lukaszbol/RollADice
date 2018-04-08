@@ -33,14 +33,14 @@ document.querySelector('.btn-roll').addEventListener('click', function()
             {
                 scores[activePlayer] = 0;
                 roundScore = 0;  
-                document.querySelector('#score-' + activePlayer).textContent = 0;
-                document.querySelector('#current-' + activePlayer).textContent = 0;
+                document.getElementById('score-' + activePlayer).textContent = 0;
+                document.getElementById('current-' + activePlayer).textContent = 0;
             }
             else
             {
                 // Add score
                 roundScore += dice;
-                document.querySelector('#current-' + activePlayer).textContent = roundScore;     
+                document.getElementById('current-' + activePlayer).textContent = roundScore;     
                 previousScore = dice;  
             }
         }
@@ -61,16 +61,18 @@ document.querySelector('.btn-hold').addEventListener('click', function()
             scores[activePlayer] += roundScore;
 
             // Update the UI
-            document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+            document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
 
             // Check if player won the game
             if(scores[activePlayer] >= winningScore)
             {
-                document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
+                document.getElementById('name-' + activePlayer).textContent = 'WINNER!';
                 document.querySelector('.dice').style.display = 'none';
                 document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
                 document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+                document.querySelector('.btn-hold').style.display = 'none';
+                document.querySelector('.btn-roll').style.display = 'none';
                 gamePlaying = false;
             }
             else
@@ -105,7 +107,17 @@ function init()
     previousScore = -1;
     gamePlaying = true;
     winningScore = prompt("Enter winning score: ");
+    
+    //added error handling for input null value or a value less than 1
+    while(winningScore === null || winningScore < 1)
+    {
+        alert("The WINNING SCORE entered is incorrect. Please try again.");
+        winningScore = prompt("Enter winning score: ");
+    }
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.btn-hold').style.display = 'block';
+    document.querySelector('.btn-roll').style.display = 'block';
+
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
