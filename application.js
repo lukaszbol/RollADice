@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore, winningScore;
+var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore, winningScore, diceQuantity;
 
 init();
 
@@ -17,38 +17,82 @@ document.querySelector('.btn-roll').addEventListener('click', function()
 {
     if(gamePlaying)
     {
-        // 1. Random number                                                 
-        var dice = Math.floor((Math.random() * 6) + 1);
-        currentScore = dice;
-    
-        // 2. Display the result
-        var diceDOM = document.querySelector('.dice');
-        diceDOM.style.display = 'block';
-        diceDOM.src = 'images/dice-' + dice + '.png';
-        
-        // 3. Update the round score IF the rolled number was not a 1
-        if(dice !== 1)
+        var dice1, dice2, dice1DOM, dice2DOM;
+        console.log("Check 0");
+        console.log("DICE QUANTITY: " + diceQuantity);
+        if(diceQuantity == 1)
         {
-            if(previousScore == 6 && dice == 6)
+            console.log("Check 1");
+            // 1. Random number                                                 
+            dice1 = Math.floor((Math.random() * 6) + 1);
+            currentScore = dice1;
+            
+            // 2. Display the result
+            dice1DOM = document.querySelector('.dice-one');
+            dice1DOM.style.display = 'block';
+            dice1DOM.src = 'images/dice-' + dice1 + '.png';
+
+            // 3. Update the round score IF the rolled number was not a 1
+            if(dice1 !== 1)
             {
-                scores[activePlayer] = 0;
-                roundScore = 0;  
-                document.getElementById('score-' + activePlayer).textContent = 0;
-                document.getElementById('current-' + activePlayer).textContent = 0;
+                if(previousScore == 6 && dice1 == 6)
+                {
+                    scores[activePlayer] = 0;
+                    roundScore = 0;  
+                    document.getElementById('score-' + activePlayer).textContent = 0;
+                    document.getElementById('current-' + activePlayer).textContent = 0;
+                }
+                else
+                {
+                    // Add score
+                    roundScore += dice1;
+                    document.getElementById('current-' + activePlayer).textContent = roundScore;     
+                    previousScore = dice1;  
+                }
+            }
+            else
+            {
+                // next player
+                nextPlayer();
+            }    
+        }
+        
+        else if(diceQuantity == 2)
+        {
+            console.log("Check 2");
+            // 1. Random numbers
+            dice1 = Math.floor((Math.random() * 6) + 1);
+            dice2 = Math.floor((Math.random() * 6) + 1);
+            currentScore = dice1 + dice2;
+            console.log("Dice 1 - " + dice1);
+            console.log("Dice 2 - " + dice2);
+            console.log("Current score - " + currentScore);
+            
+            // 2. Display the result from 2 dices
+            dice1DOM = document.querySelector('.dice-one');
+            dice1DOM.style.display = 'block';
+            dice1DOM.src = 'images/dice-' + dice1 + '.png';
+            
+            dice2DOM = document.querySelector('.dice-two');
+            dice2DOM.style.display = 'block';
+            dice2DOM.src = 'images/dice-' + dice2 + '.png';
+            
+            // 3. Update the round score IF the rolled number was not a 1
+            if(dice1 == 1 || dice2 == 1)
+            {
+                console.log('Dice 1 or Dice 2 is 1');
+                currentScore = 0;
+                document.querySelector('#current-' + activePlayer).textContent = 'Nothing!';
+                nextPlayer();
             }
             else
             {
                 // Add score
-                roundScore += dice;
-                document.getElementById('current-' + activePlayer).textContent = roundScore;     
-                previousScore = dice;  
+                roundScore += dice1 + dice2;
+                console.log('Round score: ' + roundScore);
+                document.querySelector('#current-' + activePlayer).textContent = roundScore;
             }
         }
-        else
-        {
-            // next player
-            nextPlayer();
-        }            
     }
 
 });
@@ -68,7 +112,13 @@ document.querySelector('.btn-hold').addEventListener('click', function()
             if(scores[activePlayer] >= winningScore)
             {
                 document.getElementById('name-' + activePlayer).textContent = 'WINNER!';
-                document.querySelector('.dice').style.display = 'none';
+                document.querySelector('.dice-one').style.display = 'none';
+                
+                if(diceQuantity == 2)
+                {
+                    document.querySelector('.dice-two').style.display = 'none';
+                }
+                
                 document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
                 document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
                 document.querySelector('.btn-hold').style.display = 'none';
@@ -93,7 +143,11 @@ function nextPlayer()
             
             document.querySelector('.player-0-panel').classList.toggle('active');
             document.querySelector('.player-1-panel').classList.toggle('active');
-            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.dice-one').style.display = 'none';
+            if(diceQuantity == 2)
+            {
+                document.querySelector('.dice-two').style.display = 'none';
+            }
 }
 
 
@@ -106,15 +160,25 @@ function init()
     roundScore = 0;
     previousScore = -1;
     gamePlaying = true;
-    winningScore = prompt("Enter winning score: ");
+    diceQuantity = prompt("Do you want to play 1 dice or 2 dices?");
     
+    while(diceQuantity < 1 || diceQuantity > 2)
+    {
+        alert("The DICE QUANTITY entered is incorrect. Please enter enter either 1 or 2.");
+        diceQuantity = prompt("Do you want to play 1 dice or 2 dices?");
+    }
+    
+    winningScore = prompt("Enter winning score: ");
+        
     //added error handling for input null value or a value less than 1
     while(winningScore === null || winningScore < 1)
     {
         alert("The WINNING SCORE entered is incorrect. Please try again.");
         winningScore = prompt("Enter winning score: ");
     }
-    document.querySelector('.dice').style.display = 'none';
+        
+    document.querySelector('.dice-one').style.display = 'none';
+    document.querySelector('.dice-two').style.display = 'none';
     document.querySelector('.btn-hold').style.display = 'block';
     document.querySelector('.btn-roll').style.display = 'block';
 
@@ -130,6 +194,7 @@ function init()
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+    console.log("Pre-check 3");
 }
 
 
