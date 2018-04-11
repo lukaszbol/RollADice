@@ -27,7 +27,7 @@ GAME RULES:
 - If the player rolls a 1, all their ROUND score gets lost. After that, it is the next player's turn.
 - A player looses his entire score when he rolls two 6 in a row. After that, the next player continues.
 
-1 DICE game specific game rules:
+2 DICES game specific game rules:
 - If the player rolls a 1 on one of the dices, all their ROUND score gets lost. After that, it is the next player's turn.
 
 
