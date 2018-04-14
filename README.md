@@ -18,7 +18,8 @@ This is a simple game created using JavaScript, with an utilisation of HTML and 
 
 GAME RULES:
 - The game has 2 players, playing in rounds.
-- At the start of the game, the player sets how many dices they want to use (1 or 2) and the winnning score (e.g. 20 points).
+- At the start of the game, the player sets how many dices they want to use (1 or 2).
+- Then, the player sets FINAL SCORE (e.g. 20 points), in the upper-right corner.
 - In each turn, a player rolls a dice as many times as they wish. Each result gets added to their ROUND (Current) score.
 - The player can choose to 'Hold', which means that their ROUND score gets added to the player's GLOBAL score. After that, it is the next player's turn.
 - The first player to reach the winning score (e.g. 20 points) on GLOBAL score wins the game.
@@ -63,6 +64,7 @@ The repository consists of:
 ## 5. What I Have Learned
 - declaring variables, writing functions and general syntax in JavaScript
 - JavaScript DOM operations
+- data type coercion in JavaScript
 - some CSS styling
 - increased HTML knowledge
 
