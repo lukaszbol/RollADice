@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore, winningScore, diceQuantity;
+var scores, roundScore, activePlayer, gamePlaying, previousScore, currentScore, diceQuantity;
 
 init();
 
@@ -18,17 +18,14 @@ document.querySelector('.btn-roll').addEventListener('click', function()
     if(gamePlaying)
     {
         var dice1, dice2, dice1DOM, dice2DOM;
-        console.log("Check 0");
-        console.log("DICE QUANTITY: " + diceQuantity);
         if(diceQuantity == 1)
         {
-            console.log("Check 1");
             // 1. Random number                                                 
             dice1 = Math.floor((Math.random() * 6) + 1);
             currentScore = dice1;
             
             // 2. Display the result
-            dice1DOM = document.querySelector('.dice-one');
+            dice1DOM = document.querySelector('#dice-1');
             dice1DOM.style.display = 'block';
             dice1DOM.src = 'images/dice-' + dice1 + '.png';
 
@@ -59,28 +56,23 @@ document.querySelector('.btn-roll').addEventListener('click', function()
         
         else if(diceQuantity == 2)
         {
-            console.log("Check 2");
             // 1. Random numbers
             dice1 = Math.floor((Math.random() * 6) + 1);
             dice2 = Math.floor((Math.random() * 6) + 1);
             currentScore = dice1 + dice2;
-            console.log("Dice 1 - " + dice1);
-            console.log("Dice 2 - " + dice2);
-            console.log("Current score - " + currentScore);
             
             // 2. Display the result from 2 dices
-            dice1DOM = document.querySelector('.dice-one');
+            dice1DOM = document.querySelector('#dice-1');
             dice1DOM.style.display = 'block';
             dice1DOM.src = 'images/dice-' + dice1 + '.png';
             
-            dice2DOM = document.querySelector('.dice-two');
+            dice2DOM = document.querySelector('#dice-2');
             dice2DOM.style.display = 'block';
             dice2DOM.src = 'images/dice-' + dice2 + '.png';
             
             // 3. Update the round score IF the rolled number was not a 1
             if(dice1 == 1 || dice2 == 1)
             {
-                console.log('Dice 1 or Dice 2 is 1');
                 currentScore = 0;
                 document.querySelector('#current-' + activePlayer).textContent = 'Nothing!';
                 nextPlayer();
@@ -89,7 +81,6 @@ document.querySelector('.btn-roll').addEventListener('click', function()
             {
                 // Add score
                 roundScore += dice1 + dice2;
-                console.log('Round score: ' + roundScore);
                 document.querySelector('#current-' + activePlayer).textContent = roundScore;
             }
         }
@@ -107,16 +98,29 @@ document.querySelector('.btn-hold').addEventListener('click', function()
             // Update the UI
             document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
+            var inputScore = document.querySelector('.final-score').value;
+            var winningScore;
+        
+            // Undefined, 0, null or "" are coerced to FALSE
+            // Anything else is coerced to TRUE
+            if(inputScore)
+            {
+                winningScore = inputScore;
+            }
+            else
+            {
+                winningScore = 100;
+            }
 
             // Check if player won the game
             if(scores[activePlayer] >= winningScore)
             {
                 document.getElementById('name-' + activePlayer).textContent = 'WINNER!';
-                document.querySelector('.dice-one').style.display = 'none';
+                document.querySelector('#dice-1').style.display = 'none';
                 
                 if(diceQuantity == 2)
                 {
-                    document.querySelector('.dice-two').style.display = 'none';
+                    document.querySelector('#dice-2').style.display = 'none';
                 }
                 
                 document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -143,10 +147,10 @@ function nextPlayer()
             
             document.querySelector('.player-0-panel').classList.toggle('active');
             document.querySelector('.player-1-panel').classList.toggle('active');
-            document.querySelector('.dice-one').style.display = 'none';
+            document.querySelector('#dice-1').style.display = 'none';
             if(diceQuantity == 2)
             {
-                document.querySelector('.dice-two').style.display = 'none';
+                document.querySelector('#dice-2').style.display = 'none';
             }
 }
 
@@ -167,18 +171,9 @@ function init()
         alert("The DICE QUANTITY entered is incorrect. Please enter enter either 1 or 2.");
         diceQuantity = prompt("Do you want to play 1 dice or 2 dices?");
     }
-    
-    winningScore = prompt("Enter winning score: ");
         
-    //added error handling for input null value or a value less than 1
-    while(winningScore === null || winningScore < 1)
-    {
-        alert("The WINNING SCORE entered is incorrect. Please try again.");
-        winningScore = prompt("Enter winning score: ");
-    }
-        
-    document.querySelector('.dice-one').style.display = 'none';
-    document.querySelector('.dice-two').style.display = 'none';
+    document.querySelector('#dice-1').style.display = 'none';
+    document.querySelector('#dice-2').style.display = 'none';
     document.querySelector('.btn-hold').style.display = 'block';
     document.querySelector('.btn-roll').style.display = 'block';
 
@@ -194,25 +189,7 @@ function init()
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
-    console.log("Pre-check 3");
+    
+    // clear winning score value
+    document.querySelector('.final-score').value = '';
 }
-
-
-
-
-
-// How to setup event handler:
-
-//function btn(){// do something}
-//document.querySelector('.btn-roll').addEventListener('click', btn;
-
-
-//var x = document.querySelector('#score-0').textContent;
-
-//dice = Math.floor(Math.random() * 6) + 1;
-
-//document.querySelector('#current-0').textContent = dice;
-
-//document.querySelector('#current-' + activePlayer).textContent = dice;
-
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
