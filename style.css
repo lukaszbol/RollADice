@@ -78,9 +78,9 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
-.btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-new { top: 45px; }
+.btn-roll { top: 403px; }
+.btn-hold { top: 467px; }
 
 .final-score 
 {
@@ -146,12 +146,13 @@ i {
 .active .player-score { color: #ffffff; }
 
 .active .player-name::after {
-    content: "\2022";
-    font-size: 47px;
+    content: url(images/playerOn.gif);
+    font-size: 5px;
     position: absolute;
     color: #1AAF2B;
-    top: -7px;
-    right: 10px;
+    top: -126px;
+    right: -110px;
+    transform: scale(.05);
     
 }
 
